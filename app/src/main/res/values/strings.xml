@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">WeatherApplication</string>
+
+    <string name="min">Min</string>
+    <string name="max">Max</string>
+
+    <string name="fells_like">Feels like %1$s%2$d°</string>
+    <string name="n_day_forecast">%1$d day forecast</string>
+
+    <string name="weather_clean">Clean</string>
+    <string name="weather_light_rain">Light rain</string>
+
+</resources>
