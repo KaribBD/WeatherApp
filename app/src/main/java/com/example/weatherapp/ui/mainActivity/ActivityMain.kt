@@ -1,11 +1,14 @@
-package com.example.weatherapp
+package com.example.weatherapp.ui.mainActivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.weatherapp.R
 import com.example.weatherapp.databinding.ActivityMainBinding
-import com.example.weatherapp.ui.main.MainFragment
+import com.example.weatherapp.ui.mainActivity.fragments.fragmentMain.FragmentMain
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainActivity : AppCompatActivity() {
+@AndroidEntryPoint
+class ActivityMain : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -18,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance())
+                .replace(R.id.container, FragmentMain.newInstance())
                 .commitNow()
         }
     }

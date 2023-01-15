@@ -1,7 +1,7 @@
-package com.example.weatherapp.utils
+package com.example.weatherapp.data.utils
 
-import com.example.weatherapp.model.InfoDay
-import com.example.weatherapp.model.InfoHour
+import com.example.weatherapp.domain.models.InfoDay
+import com.example.weatherapp.domain.models.InfoHour
 import java.time.DayOfWeek
 
 class UtilsTemporary {
@@ -9,22 +9,22 @@ class UtilsTemporary {
     companion object {
         fun getWeatherListExample(): List<InfoHour> {
             return listOf(
-                InfoHour("now",2),
-                InfoHour("09.00",-2),
-                InfoHour("10.00",4),
-                InfoHour("10.00",4),
-                InfoHour("11.00",8),
-                InfoHour("12.00",-10),
-                InfoHour("13.00",23),
-                InfoHour("14.00",-25),
-                InfoHour("15.00",29),
-                InfoHour("16.00",2),
-                InfoHour("17.00",0),
-                InfoHour("18.00",0),
-                InfoHour("19.00",0),
-                InfoHour("20.00",0),
-                InfoHour("21.00",0),
-                InfoHour("22.00",0),
+                InfoHour("now",2.0),
+                InfoHour("09.00",-2.0),
+                InfoHour("10.00",4.0),
+                InfoHour("10.00",4.0),
+                InfoHour("11.00",8.0),
+                InfoHour("12.00",-10.0),
+                InfoHour("13.00",23.0),
+                InfoHour("14.00",-25.0),
+                InfoHour("15.00",29.0),
+                InfoHour("16.00",2.0),
+                InfoHour("17.00",0.0),
+                InfoHour("18.00",0.0),
+                InfoHour("19.00",0.0),
+                InfoHour("20.00",0.0),
+                InfoHour("21.00",0.0),
+                InfoHour("22.00",0.0),
             )
         }
 

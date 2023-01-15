@@ -1,10 +1,10 @@
-package com.example.weatherapp.ui.main
+package com.example.weatherapp.ui.mainActivity.fragments.fragmentMain
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.databinding.ItemNextDaysWeatherBinding
-import com.example.weatherapp.model.InfoDay
+import com.example.weatherapp.domain.models.InfoDay
 
 class RecyclerViewAdapterWeatherNextDays(val listNextDays: List<InfoDay>) :
     RecyclerView.Adapter<RecyclerViewAdapterWeatherNextDays.ViewHolder>() {
