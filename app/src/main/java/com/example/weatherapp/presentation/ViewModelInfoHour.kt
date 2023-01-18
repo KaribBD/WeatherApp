@@ -1,9 +1,11 @@
 package com.example.weatherapp.presentation
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.weatherapp.domain.inteactor.GetLocationUpdatesUseCase
 import com.example.weatherapp.domain.models.InfoHour
 import com.example.weatherapp.domain.inteactor.UseCaseGetInfoHourList
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,7 +23,8 @@ sealed class InfoHourUIModel {
 
 @HiltViewModel
 class ViewModelInfoHour @Inject constructor(
-    private val infoHourGetListUseCase: UseCaseGetInfoHourList
+    private val infoHourGetListUseCase: UseCaseGetInfoHourList,
+    private val getLocationUpdatesUseCase: GetLocationUpdatesUseCase
 ) : ViewModel() {
 
     private val _listInfoHour = MutableLiveData<InfoHourUIModel>()
@@ -43,9 +46,16 @@ class ViewModelInfoHour @Inject constructor(
     }
 
     private suspend fun loadListInfoHour() {
-        infoHourGetListUseCase(Unit).collect {
-            _listInfoHour.postValue(InfoHourUIModel.Success(it))
+
+        getLocationUpdatesUseCase(Unit).collect { coordinates ->
+
+            Log.i("coordinates", "coordinates = $coordinates}")
+
+            infoHourGetListUseCase(coordinates).collect { //todo real coordinates
+                _listInfoHour.postValue(InfoHourUIModel.Success(it))
+            }
         }
+
     }
 
 

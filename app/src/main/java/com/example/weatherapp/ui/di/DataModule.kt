@@ -1,6 +1,8 @@
 package com.example.weatherapp.ui.di
 
+import com.example.weatherapp.data.LocationEntityRepository
 import com.example.weatherapp.data.RepositoryImplInfoHour
+import com.example.weatherapp.domain.repository.LocationRepository
 import com.example.weatherapp.domain.repository.RepositoryInfoHour
 import dagger.Module
 import dagger.Provides
@@ -16,4 +18,9 @@ object DataModule {
     @Singleton
     fun provideHourListRepository(repositoryImplInfoHour: RepositoryImplInfoHour) : RepositoryInfoHour =
         repositoryImplInfoHour
+
+    @Provides
+    @Singleton
+    fun provideCoordinatesRepository(locationEntityRepository: LocationEntityRepository): LocationRepository =
+        locationEntityRepository
 }
