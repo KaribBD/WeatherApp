@@ -2,13 +2,11 @@ package com.example.weatherapp.dataRemote.api
 
 import com.example.weatherapp.dataRemote.models.ModelResponseInfoHour
 import retrofit2.http.GET
-import com.squareup.moshi.JsonClass
 
-import com.squareup.moshi.Json
 import retrofit2.http.Query
 
 
-interface ServiceInfoHour {
+interface InfoHourService {
 
     @GET("forecast")
     suspend fun getInfoHour(

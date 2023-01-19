@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Looper
 import androidx.core.app.ActivityCompat
-import com.example.weatherapp.data.model.EntityCoordinates
+import com.example.weatherapp.data.model.CoordinatesEntity
 import com.example.weatherapp.data.repository.LocationEntityData
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import javax.inject.Inject
 
-class NetworkLocationEntityData @Inject constructor(
+class LocationEntityDataRemote @Inject constructor(
     private val context: Context
 ): LocationEntityData {
 
@@ -33,7 +33,7 @@ class NetworkLocationEntityData @Inject constructor(
 
     private val locationClient by lazy { LocationServices.getFusedLocationProviderClient(context) }
 
-    override suspend fun getLocation(): Flow<EntityCoordinates> {
+    override suspend fun getLocation(): Flow<CoordinatesEntity> {
         if (ActivityCompat.checkSelfPermission(
                 context,
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -59,7 +59,7 @@ class NetworkLocationEntityData @Inject constructor(
                     super.onLocationResult(locationResult)
                     val location = locationResult.lastLocation
                     if (location != null) {
-                        val userLocation = EntityCoordinates(
+                        val userLocation = CoordinatesEntity(
                             latitude = location.latitude,
                             longitude = location.longitude
                         )

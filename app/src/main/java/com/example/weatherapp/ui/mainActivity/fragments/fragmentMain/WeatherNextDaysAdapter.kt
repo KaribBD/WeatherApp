@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.databinding.ItemNextDaysWeatherBinding
 import com.example.weatherapp.domain.models.InfoDay
 
-class RecyclerViewAdapterWeatherNextDays(val listNextDays: List<InfoDay>) :
-    RecyclerView.Adapter<RecyclerViewAdapterWeatherNextDays.ViewHolder>() {
+class WeatherNextDaysAdapter(val listNextDays: List<InfoDay>) :
+    RecyclerView.Adapter<WeatherNextDaysAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemNextDaysWeatherBinding

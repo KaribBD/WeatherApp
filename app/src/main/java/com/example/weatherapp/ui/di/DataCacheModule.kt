@@ -1,7 +1,7 @@
 package com.example.weatherapp.ui.di
 
 import com.example.weatherapp.data.repository.InfoHourCache
-import com.example.weatherapp.dataCache.repository.CacheImplInfoHour
+import com.example.weatherapp.dataCache.repository.InfoHourCacheImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,6 +14,6 @@ object DataCacheModule {
 
     @Provides
     @Singleton
-    fun provideInfoHourCache(cacheImplInfoHour: CacheImplInfoHour) : InfoHourCache =
-        cacheImplInfoHour
+    fun provideInfoHourCache(infoHourCacheImpl: InfoHourCacheImpl) : InfoHourCache =
+        infoHourCacheImpl
 }

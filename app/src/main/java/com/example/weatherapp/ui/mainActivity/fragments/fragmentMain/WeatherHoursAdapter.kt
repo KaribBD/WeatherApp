@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.databinding.ItemHourWeatherBinding
 import com.example.weatherapp.domain.models.InfoHour
 
-class RecyclerViewAdapterWeatherHours :
-    RecyclerView.Adapter<RecyclerViewAdapterWeatherHours.ViewHolderItemHour>() {
+class WeatherHoursAdapter :
+    RecyclerView.Adapter<WeatherHoursAdapter.ViewHolderItemHour>() {
 
     private val diffCallback = object : DiffUtil.ItemCallback<InfoHour>() {
         override fun areItemsTheSame(oldItem: InfoHour, newItem: InfoHour): Boolean {

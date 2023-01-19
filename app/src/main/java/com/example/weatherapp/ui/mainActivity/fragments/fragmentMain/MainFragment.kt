@@ -16,17 +16,17 @@ import com.example.weatherapp.ui.core.dialog.showLoadingDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FragmentMain : Fragment() {
+class MainFragment : Fragment() {
 
     companion object {
-        fun newInstance() = FragmentMain()
+        fun newInstance() = MainFragment()
     }
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var viewModel: ViewModelInfoHour
-    private lateinit var adapterWeatherHours: RecyclerViewAdapterWeatherHours
+    private lateinit var adapterWeatherHours: WeatherHoursAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +45,7 @@ class FragmentMain : Fragment() {
         binding.todayFeelsLike.text = getString(R.string.fells_like, "+", 1)
         binding.nextDayForecastTextView.text = getString(R.string.n_day_forecast, 10)
 
-        adapterWeatherHours = RecyclerViewAdapterWeatherHours()
+        adapterWeatherHours = WeatherHoursAdapter()
         binding.todayHoursWeatherRecyclerView.adapter = adapterWeatherHours
 
         //val adapterWeatherNextDays =

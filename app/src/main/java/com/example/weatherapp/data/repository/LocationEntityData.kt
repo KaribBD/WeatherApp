@@ -1,9 +1,9 @@
 package com.example.weatherapp.data.repository
 
-import com.example.weatherapp.data.model.EntityCoordinates
+import com.example.weatherapp.data.model.CoordinatesEntity
 import kotlinx.coroutines.flow.Flow
 
 interface LocationEntityData {
-    suspend fun getLocation(): Flow<EntityCoordinates>
-    suspend fun saveLocation(coordinates: EntityCoordinates) { /* default implementation */ }
+    suspend fun getLocation(): Flow<CoordinatesEntity>
+    suspend fun saveLocation(coordinates: CoordinatesEntity) { /* default implementation */ }
 }

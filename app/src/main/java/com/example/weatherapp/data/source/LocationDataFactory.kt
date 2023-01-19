@@ -10,7 +10,7 @@ class LocationDataFactory @Inject constructor(
 ) {
     fun createData(source: SourceName): LocationEntityData {
         return when (source) {
-            SourceName.Network -> NetworkLocationEntityData(context)
+            SourceName.Network -> LocationEntityDataRemote(context)
             //Source.Local -> LocalLocationEntityData(context)
             // Source.Mock -> MockLocationEntityData(context)
             // ...

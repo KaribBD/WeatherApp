@@ -2,7 +2,7 @@ package com.example.weatherapp.domain.inteactor
 
 import com.example.weatherapp.domain.models.Coordinates
 import com.example.weatherapp.domain.models.InfoHour
-import com.example.weatherapp.domain.repository.RepositoryInfoHour
+import com.example.weatherapp.domain.repository.InfoHourRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -10,11 +10,11 @@ typealias UseCaseGetInfoHourListBase = BaseUseCase<Coordinates, Flow<List<InfoHo
 
 
 class UseCaseGetInfoHourList @Inject constructor(
-    private val repositoryInfoHour: RepositoryInfoHour,
+    private val infoHourRepository: InfoHourRepository,
 ) : UseCaseGetInfoHourListBase  {
 
     override suspend fun invoke(params: Coordinates): Flow<List<InfoHour>> {
-        return repositoryInfoHour.getWeatherHoursList(params)
+        return infoHourRepository.getWeatherHoursList(params)
     }
 
 //    can be changed to:

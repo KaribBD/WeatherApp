@@ -1,6 +1,6 @@
 package com.example.weatherapp.dataRemote.models
 
-data class ModelInfoHour(
+data class InfoHourModel(
     val hour: String,
     val temperature: Int
 )
