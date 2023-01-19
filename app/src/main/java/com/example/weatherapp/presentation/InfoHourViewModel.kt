@@ -49,7 +49,7 @@ class ViewModelInfoHour @Inject constructor(
 
         getLocationUpdatesUseCase(Unit).collect { coordinates ->
 
-            Log.i("coordinates", "coordinates = $coordinates}")
+            Log.i("coordinates", "$coordinates")
 
             infoHourGetListUseCase(coordinates).collect { //todo real coordinates
                 _listInfoHour.postValue(InfoHourUIModel.Success(it))

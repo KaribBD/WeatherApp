@@ -12,6 +12,14 @@ interface InfoHourService {
     suspend fun getInfoHour(
         @Query("lat") lat: Double,
         @Query("lon") lon: Double,
-        @Query("appid") appid: String)
-    : ModelResponseInfoHour
+        @Query("appid") appid: String,
+        @Query("units") units: String
+    ): ModelResponseInfoHour
+
+}
+
+enum class Units(val unit: String) {
+    KELVIN("standard"),
+    FAHRENHEIT("imperial"),
+    CELSIUS("metric")
 }
