@@ -6,11 +6,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
-object InfoHourServiceFactory {
+object WeatherServiceFactory {
 
-    fun create(isDebug: Boolean, baseUrl: String): InfoHourService {
+    fun create(isDebug: Boolean, baseUrl: String): WeatherService {
         val retrofit = createRetrofit(isDebug, baseUrl)
-        return retrofit.create(InfoHourService::class.java)
+        return retrofit.create(WeatherService::class.java)
     }
 
     private fun createRetrofit(isDebug: Boolean, baseUrl: String): Retrofit {

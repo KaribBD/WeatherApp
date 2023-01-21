@@ -6,17 +6,17 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.databinding.ItemHourWeatherBinding
-import com.example.weatherapp.domain.models.InfoHour
+import com.example.weatherapp.domain.models.HourWeather
 
 class WeatherHoursAdapter :
     RecyclerView.Adapter<WeatherHoursAdapter.ViewHolderItemHour>() {
 
-    private val diffCallback = object : DiffUtil.ItemCallback<InfoHour>() {
-        override fun areItemsTheSame(oldItem: InfoHour, newItem: InfoHour): Boolean {
+    private val diffCallback = object : DiffUtil.ItemCallback<HourWeather>() {
+        override fun areItemsTheSame(oldItem: HourWeather, newItem: HourWeather): Boolean {
             return oldItem.hour == newItem.hour
         }
 
-        override fun areContentsTheSame(oldItem: InfoHour, newItem: InfoHour): Boolean {
+        override fun areContentsTheSame(oldItem: HourWeather, newItem: HourWeather): Boolean {
             return oldItem.hashCode() == newItem.hashCode()
         }
     }
@@ -25,7 +25,7 @@ class WeatherHoursAdapter :
 
     /////////////////////////////////////////
 
-    var dataList: List<InfoHour>
+    var dataList: List<HourWeather>
         get() = differ.currentList
         set(value) = differ.submitList(value)
 
@@ -47,9 +47,9 @@ class WeatherHoursAdapter :
     class ViewHolderItemHour(private val binding: ItemHourWeatherBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(infoHour: InfoHour) {
-            binding.itemHourTime.text = infoHour.hour
-            binding.itemHourTemperature.text = infoHour.temperature.toString()
+        fun bind(hourWeather: HourWeather) {
+            binding.itemHourTime.text = hourWeather.hour
+            binding.itemHourTemperature.text = hourWeather.temperature.toString()
         }
     }
 

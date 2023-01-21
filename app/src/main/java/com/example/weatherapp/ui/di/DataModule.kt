@@ -1,9 +1,9 @@
 package com.example.weatherapp.ui.di
 
 import com.example.weatherapp.data.LocationEntityRepository
-import com.example.weatherapp.data.InfoHourRepositoryImpl
+import com.example.weatherapp.data.WeatherRepositoryImpl
 import com.example.weatherapp.domain.repository.LocationRepository
-import com.example.weatherapp.domain.repository.InfoHourRepository
+import com.example.weatherapp.domain.repository.WeatherRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,8 +16,8 @@ object DataModule {
 
     @Provides
     @Singleton
-    fun provideHourListRepository(repositoryImplInfoHour: InfoHourRepositoryImpl) : InfoHourRepository =
-        repositoryImplInfoHour
+    fun provideHourListRepository(weatherRepositoryImpl: WeatherRepositoryImpl) : WeatherRepository =
+        weatherRepositoryImpl
 
     @Provides
     @Singleton

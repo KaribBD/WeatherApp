@@ -1,9 +1,9 @@
 package com.example.weatherapp.ui.di
 
-import com.example.weatherapp.data.repository.InfoHourRemote
-import com.example.weatherapp.dataRemote.api.InfoHourServiceFactory
-import com.example.weatherapp.dataRemote.api.InfoHourService
-import com.example.weatherapp.dataRemote.repository.InfoHourRemoteImpl
+import com.example.weatherapp.data.repository.WeatherRemote
+import com.example.weatherapp.dataRemote.api.WeatherService
+import com.example.weatherapp.dataRemote.api.WeatherServiceFactory
+import com.example.weatherapp.dataRemote.repository.WeatherRemoteImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,15 +16,14 @@ object DataRemoteModule {
 
     @Provides
     @Singleton
-    fun provideInfoHourRemote(infoHourRemoteImpl: InfoHourRemoteImpl) : InfoHourRemote =
-        infoHourRemoteImpl
+    fun provideInfoHourRemote(weatherRemoteImpl: WeatherRemoteImpl) : WeatherRemote =
+        weatherRemoteImpl
 
     @Provides
     @Singleton
-    fun serviceInfoHour() : InfoHourService =
-        InfoHourServiceFactory.create(true, baseUrl)
+    fun serviceInfoHour() : WeatherService =
+        WeatherServiceFactory.create(true, baseUrl)
 
-    private val baseUrl = "https://api.openweathermap.org/data/2.5/" //todo store url in another place
-
+    private val baseUrl = "https://api.open-meteo.com/v1/" //todo store url in another place
 
 }
