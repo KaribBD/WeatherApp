@@ -8,19 +8,17 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class LocationEntityRepository @Inject constructor(
+class LocationRepositoryImpl @Inject constructor(
     private val locationDataFactory: LocationDataFactory,
-    private val mapper: CoordinatesMapper
+    private val coordinatesMapper: CoordinatesMapper
 ) : LocationRepository {
 
-    override suspend fun getLocation(): Flow<Coordinates>  {
-        val coordinatesFlow = createNetworkData().getLocation().map { entityCoordinates ->
-            mapper.mapFromEntity(entityCoordinates)
-        }
+    override suspend fun getLocation(): Flow<Coordinates> {
+        val coordinatesFlow = locationDataFactory.getDataStore().getLocation()
+            .map { entityCoordinates ->
+                coordinatesMapper.mapFromEntity(entityCoordinates)
+            }
         return coordinatesFlow
     }
-
-    private fun createNetworkData() =
-        locationDataFactory.createData(LocationDataFactory.SourceName.Network)
 
 }

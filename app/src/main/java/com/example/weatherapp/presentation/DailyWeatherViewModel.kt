@@ -40,6 +40,7 @@ class DailyWeatherViewModel @Inject constructor(
     //coroutines
 
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, exception ->
+        Log.i("WeatherException", "exception, $exception")
         _dailyWeatherList.postValue(DailyWeatherUIModel.Error(exception.message ?: "Error"))
     }
 

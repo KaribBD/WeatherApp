@@ -1,4 +1,4 @@
-package com.example.weatherapp.data.source
+package com.example.weatherapp.dataRemote.repository
 
 import android.Manifest
 import android.content.Context
@@ -6,28 +6,27 @@ import android.content.pm.PackageManager
 import android.os.Looper
 import androidx.core.app.ActivityCompat
 import com.example.weatherapp.data.model.CoordinatesEntity
-import com.example.weatherapp.data.repository.LocationEntityData
+import com.example.weatherapp.data.repository.LocationRemote
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.Priority
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import javax.inject.Inject
 
-class LocationEntityDataRemote @Inject constructor(
-    private val context: Context
-): LocationEntityData {
-
-
+class LocationRemoteImpl @Inject constructor(
+    @ApplicationContext private val context: Context,
+) : LocationRemote {
     private val locationRequest by lazy {
-        LocationRequest.create().apply {
-            interval = LOCATION_REQUEST_INTERVAL
-            fastestInterval = LOCATION_REQUEST_FASTEST_INTERVAL
-            maxWaitTime = LOCATION_MAX_WAIT_TIME
-            priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-        }
+        LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, LOCATION_REQUEST_INTERVAL)
+            .setMinUpdateIntervalMillis(LOCATION_REQUEST_FASTEST_INTERVAL)
+            .setMaxUpdateDelayMillis(LOCATION_MAX_WAIT_TIME)
+            .setWaitForAccurateLocation(false)
+            .build()
     }
 
 
@@ -49,7 +48,7 @@ class LocationEntityDataRemote @Inject constructor(
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
-            throw Exception("djddjj") //todo change!
+            throw Exception("Location permission wasn't granted") //todo change!
         }
 
         return callbackFlow {
@@ -65,7 +64,7 @@ class LocationEntityDataRemote @Inject constructor(
                         )
                         trySend(userLocation).isSuccess
                     } else {
-                        throw Exception("joja123") //todo change!
+                        throw Exception("Location == null") //todo change!
                     }
 
                 }
@@ -84,8 +83,4 @@ class LocationEntityDataRemote @Inject constructor(
         const val LOCATION_REQUEST_FASTEST_INTERVAL = 4000L
         const val LOCATION_MAX_WAIT_TIME = 2_000_000L
     }
-
-
-
-
 }

@@ -1,6 +1,6 @@
 package com.example.weatherapp.ui.di
 
-import com.example.weatherapp.data.LocationEntityRepository
+import com.example.weatherapp.data.LocationRepositoryImpl
 import com.example.weatherapp.data.WeatherRepositoryImpl
 import com.example.weatherapp.domain.repository.LocationRepository
 import com.example.weatherapp.domain.repository.WeatherRepository
@@ -21,6 +21,7 @@ object DataModule {
 
     @Provides
     @Singleton
-    fun provideCoordinatesRepository(locationEntityRepository: LocationEntityRepository): LocationRepository =
-        locationEntityRepository
+    fun provideCoordinatesRepository(locationRepositoryImpl: LocationRepositoryImpl): LocationRepository =
+        locationRepositoryImpl
+
 }

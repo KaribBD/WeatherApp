@@ -7,15 +7,15 @@ import com.example.weatherapp.data.repository.WeatherRemote
 import javax.inject.Inject
 
 class WeatherDataSourceRemote @Inject constructor(
-    private val remoteInfoHourRemote: WeatherRemote
+    private val infoHourRemote: WeatherRemote
 ) : WeatherRemote {
 
     override suspend fun getHourlyWeather(coordinates: CoordinatesEntity): List<HourlyWeatherEntity> {
-        return remoteInfoHourRemote.getHourlyWeather(coordinates)
+        return infoHourRemote.getHourlyWeather(coordinates)
     }
 
     override suspend fun getDailyWeather(coordinates: CoordinatesEntity): List<DailyWeatherEntity> {
-        return remoteInfoHourRemote.getDailyWeather(coordinates)
+        return infoHourRemote.getDailyWeather(coordinates)
     }
 
 }

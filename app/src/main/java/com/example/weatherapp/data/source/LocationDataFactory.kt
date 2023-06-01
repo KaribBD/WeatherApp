@@ -1,27 +1,15 @@
 package com.example.weatherapp.data.source
 
-import android.content.Context
-import com.example.weatherapp.data.repository.LocationEntityData
-import dagger.hilt.android.qualifiers.ApplicationContext
+import com.example.weatherapp.data.repository.LocationDataSource
 import javax.inject.Inject
 
 class LocationDataFactory @Inject constructor(
-    @ApplicationContext private val context: Context
+    private val locationEntityDataCache: LocationDataSourceCache,
+    private val locationEntityDataRemote: LocationDataSourceRemote
 ) {
-    fun createData(source: SourceName): LocationEntityData {
-        return when (source) {
-            SourceName.Network -> LocationEntityDataRemote(context)
-            //Source.Local -> LocalLocationEntityData(context)
-            // Source.Mock -> MockLocationEntityData(context)
-            // ...
-            else -> {
-                throw Exception()//todo change exception
-            }
-        }
+
+    suspend fun getDataStore(): LocationDataSource {
+        return locationEntityDataRemote
     }
 
-    enum class SourceName{
-        Network,
-        Local
-    }
 }

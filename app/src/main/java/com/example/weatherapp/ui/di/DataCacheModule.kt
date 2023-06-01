@@ -1,6 +1,8 @@
 package com.example.weatherapp.ui.di
 
+import com.example.weatherapp.data.repository.LocationCache
 import com.example.weatherapp.data.repository.WeatherCache
+import com.example.weatherapp.dataCache.repository.LocationCacheImpl
 import com.example.weatherapp.dataCache.repository.WeatherCacheImpl
 import dagger.Module
 import dagger.Provides
@@ -16,4 +18,9 @@ object DataCacheModule {
     @Singleton
     fun provideWeatherCache(weatherCacheImpl: WeatherCacheImpl) : WeatherCache =
         weatherCacheImpl
+
+    @Provides
+    @Singleton
+    fun provideLocationCache(locationCacheImpl: LocationCacheImpl) : LocationCache =
+        locationCacheImpl
 }

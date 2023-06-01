@@ -1,8 +1,10 @@
 package com.example.weatherapp.ui.di
 
+import com.example.weatherapp.data.repository.LocationRemote
 import com.example.weatherapp.data.repository.WeatherRemote
 import com.example.weatherapp.dataRemote.api.WeatherService
 import com.example.weatherapp.dataRemote.api.WeatherServiceFactory
+import com.example.weatherapp.dataRemote.repository.LocationRemoteImpl
 import com.example.weatherapp.dataRemote.repository.WeatherRemoteImpl
 import dagger.Module
 import dagger.Provides
@@ -26,4 +28,9 @@ object DataRemoteModule {
 
     private val baseUrl = "https://api.open-meteo.com/v1/" //todo store url in another place
 
+
+    @Provides
+    @Singleton
+    fun provideLocationRemote(locationRemoteImpl: LocationRemoteImpl) : LocationRemote =
+        locationRemoteImpl
 }
